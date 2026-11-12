@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="color-scheme" content="light">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>borderless – free study materials for everyone</title>
+<style>
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
+--bg1:#d9f4ff;--bg2:#e6fbe9;--ink:#0b3a4a;--mute:#4f7a88;--glass:rgba(255,255,255,.62);--glass2:rgba(255,255,255,.85);--line:rgba(255,255,255,.9);
+--blue:#1a9be6;--blue2:#0a6fc2;--green:#3fc46a;--green2:#1f9a4a;--shadow:0 8px 24px rgba(20,110,160,.18)}
+@media not all{:root:not([data-theme="light"]){color-scheme:dark;--bg1:#062a3b;--bg2:#073326;--ink:#e6f8ff;--mute:#9cc6d4;--glass:rgba(10,50,70,.62);--glass2:rgba(12,60,82,.9);--line:rgba(160,230,255,.25);--shadow:0 8px 24px rgba(0,0,0,.35)}}
+:root[data-theme="dark"]{color-scheme:dark;--bg1:#062a3b;--bg2:#073326;--ink:#e6f8ff;--mute:#9cc6d4;--glass:rgba(10,50,70,.62);--glass2:rgba(12,60,82,.9);--line:rgba(160,230,255,.25);--shadow:0 8px 24px rgba(0,0,0,.35)}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;font-family:"Trebuchet MS","Segoe UI",Verdana,sans-serif;color:var(--ink);background:#ffffff linear-gradient(180deg,#f4fbff 0,#ffffff 420px);background-attachment:scroll;min-height:100vh}
+h1,h2,h3{font-family:Georgia,"Palatino Linotype",serif;margin:.2em 0}
+.bub{position:fixed;border-radius:50%;background:radial-gradient(circle at 30% 30%,#fffc,#7fd6ff77 60%,#7fd6ff22);border:1px solid #7fd6ff99;pointer-events:none;z-index:0}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;margin:10px;padding:8px 14px;display:flex;gap:10px;align-items:center;flex-wrap:wrap;background:var(--glass);backdrop-filter:blur(14px);border:1px solid var(--line);border-radius:22px;box-shadow:var(--shadow)}
+.logo{font:700 1.4rem Georgia,serif;display:flex;align-items:center;gap:8px;cursor:pointer}
+.logo{font:700 1.7rem Georgia,serif;letter-spacing:.01em;background:linear-gradient(90deg,#1a9be6,#2fb35a);-webkit-background-clip:text;background-clip:text;color:transparent}
+.langs{flex-basis:100%;display:flex;flex-wrap:wrap;gap:5px;padding-top:8px;border-top:1px solid var(--line)}
+.lc{border:1px solid var(--line);background:var(--glass2);color:var(--ink);border-radius:99px;padding:3px 11px;cursor:pointer;font-size:.82rem}
+.lc.on{background:linear-gradient(180deg,#8be0ff,#3fb3f0);color:#fff;font-weight:700}
+.wm{font:700 clamp(2.8rem,9vw,5rem) Georgia,serif;letter-spacing:.01em;text-shadow:0 3px 8px #0005;line-height:1}
+.two{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px;margin:14px 0}
+.two div{background:rgba(5,70,110,.32);border:1px solid #fff6;border-radius:18px;padding:12px 16px}.two h3{margin:0 0 4px}.two p{margin:0;line-height:1.55;max-width:none}
+.boxes{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:14px;margin-bottom:22px}
+.sbox{background:var(--glass);border:1px solid var(--line);border-radius:22px;padding:14px;box-shadow:var(--shadow)}.sbox h3{margin:0 0 8px}
+.chips{display:flex;flex-wrap:wrap;gap:6px}.sbox .cat{width:auto;border:1px solid var(--line);background:var(--glass2)}.sbox .cat.on{background:linear-gradient(180deg,#8be0ff,#3fb3f0)}
+@media(max-width:800px){header{position:static}}
+nav{display:flex;gap:4px}
+.tab,.btn,select,input,textarea{font:inherit}
+.tab{border:0;background:none;color:var(--ink);padding:8px 14px;border-radius:99px;cursor:pointer}
+.tab.on{background:linear-gradient(#fff9,#fff3);box-shadow:inset 0 0 0 1px var(--line)}
+.btn{border:1px solid #fff9;color:#fff;padding:8px 18px;border-radius:99px;cursor:pointer;font-weight:700;background:linear-gradient(180deg,#6fd3ff 0%,var(--blue) 48%,var(--blue2) 52%,#35b0f0 100%);box-shadow:0 3px 8px rgba(10,111,194,.4),inset 0 1px 0 #fffa;text-shadow:0 1px 1px #0005}
+.btn.g{background:linear-gradient(180deg,#9af0a8 0%,var(--green) 48%,var(--green2) 52%,#5bd37f 100%);box-shadow:0 3px 8px rgba(31,154,74,.4),inset 0 1px 0 #fffa}
+.btn:hover{filter:brightness(1.08)}
+:focus-visible{outline:3px solid #ffb703;outline-offset:2px}
+input,select,textarea{padding:9px 14px;border-radius:14px;border:1px solid var(--line);background:var(--glass2);color:var(--ink);max-width:100%}
+.sp{flex:1}
+#q{min-width:140px;flex:1;max-width:340px}
+main{position:relative;z-index:1;max-width:1250px;margin:0 auto;padding:6px 14px 60px}
+.hero{padding:26px;border-radius:28px;margin:6px 0 16px;background:linear-gradient(135deg,#5cc8ff,#2aa7e8 45%,#4fd07b);color:#fff;position:relative;overflow:hidden;box-shadow:var(--shadow)}
+.hero:before{content:"";position:absolute;inset:0 0 50% 0;background:linear-gradient(#fff6,#fff0);border-radius:28px 28px 60% 60%}
+.hero>*{position:relative}.hero p{max-width:60ch;margin:.4em 0 1em;text-shadow:0 1px 2px #0004}.hero h1{font-size:clamp(1.7rem,4vw,2.6rem);text-shadow:0 2px 4px #0004}
+.layout{display:grid;grid-template-columns:230px 1fr;gap:16px}
+@media(max-width:800px){.layout{grid-template-columns:1fr}}
+.side{background:var(--glass);border:1px solid var(--line);border-radius:22px;padding:10px;align-self:start;position:sticky;top:84px;max-height:calc(100vh - 110px);overflow:auto;box-shadow:var(--shadow)}
+@media(max-width:800px){.side{position:static;max-height:none;display:flex;gap:6px;overflow-x:auto;white-space:nowrap}.side h4{display:none}}
+.side h4{margin:10px 8px 4px;font-size:.8rem;color:var(--mute)}
+.cat{display:block;width:100%;text-align:left;border:0;background:none;color:var(--ink);padding:6px 10px;border-radius:12px;cursor:pointer;font-size:.92rem}
+.cat:hover{background:#fff5}.cat.on{background:linear-gradient(180deg,#8be0ff,#3fb3f0);color:#fff;font-weight:700}
+@media(max-width:800px){.cat{width:auto;border:1px solid var(--line)}}
+.grid{column-width:230px;column-gap:14px}
+.card{break-inside:avoid;margin:0 0 14px;background:var(--glass2);border:1px solid var(--line);border-radius:20px;overflow:hidden;box-shadow:var(--shadow);cursor:pointer}
+.thumb{height:110px;display:flex;align-items:center;justify-content:center;font:700 1.1rem Georgia,serif;color:#0b3a4a;position:relative}
+.thumb:after{content:"";position:absolute;inset:0 0 55% 0;background:linear-gradient(#fff7,#fff0)}
+.card .b{padding:10px 14px 12px}.card h3{font-size:1.02rem}.meta{font-size:.78rem;color:var(--mute)}
+.row{display:flex;gap:6px;align-items:center;margin-top:8px;flex-wrap:wrap}
+.pill{font-size:.72rem;padding:2px 9px;border-radius:99px;background:linear-gradient(#e3f7ff,#bfe8ff);color:#0a4d72}
+.act{border:1px solid var(--line);background:var(--glass);color:var(--ink);border-radius:99px;padding:3px 10px;cursor:pointer;font-size:.85rem}
+.act.on{background:#ffe0e6;color:#c2185b}
+.modal{position:fixed;inset:0;z-index:50;background:#04304a88;backdrop-filter:blur(5px);display:none;align-items:center;justify-content:center;padding:14px}
+.modal.on{display:flex}
+.box{background:var(--glass2);border:1px solid var(--line);border-radius:26px;max-width:560px;width:100%;max-height:90vh;overflow:auto;padding:20px;box-shadow:0 20px 60px #0006}
+.box label{display:block;margin:10px 0 3px;font-size:.85rem;color:var(--mute)}.box input,.box select,.box textarea{width:100%}
+.cm{background:var(--glass);border-radius:14px;padding:8px 12px;margin:6px 0;font-size:.9rem}
+.panel{background:var(--glass);border:1px solid var(--line);border-radius:24px;padding:22px;box-shadow:var(--shadow);margin-bottom:14px;max-width:820px}
+.panel p{line-height:1.65}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:10px;margin:12px 0}
+.stat{background:linear-gradient(#fff9,#cfeeff88);border:1px solid var(--line);border-radius:18px;padding:12px}.stat b{font:700 1.5rem Georgia,serif;color:var(--blue2)}
+@media not all{:root:not([data-theme="light"]) .stat{background:var(--glass)}:root:not([data-theme="light"]) .pill{background:#0d5a7d;color:#dff6ff}}
+.amts{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0}.amts .act{padding:8px 18px;font-size:1rem}.amts .act.on{background:linear-gradient(#9af0a8,#3fc46a);color:#fff}
+.empty{padding:30px;text-align:center;color:var(--mute)}
+.toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--green2);color:#fff;padding:10px 20px;border-radius:99px;z-index:60;display:none}
+[dir=rtl] .cat{text-align:right}
+@media(prefers-reduced-motion:no-preference){.bub{animation:dr var(--d,16s) ease-in-out infinite alternate}@keyframes dr{0%{transform:translate(0,0)}35%{transform:translate(26px,-34px) scale(1.04)}70%{transform:translate(-20px,-16px)}100%{transform:translate(14px,-46px) scale(.97)}}}
+
+:root{--bg1:#f1faff;--bg2:#ffffff;--blue:#35b6ff;--blue2:#1496e8;--green:#52d97c;--green2:#2fb35e}
+a{color:#0a63b0}@media not all{:root:not([data-theme="light"]) a{color:#8fd8ff}}
+.btn{color:#04304a;text-shadow:0 1px 0 #fff9}.btn:disabled{opacity:.5;cursor:not-allowed;filter:none}
+.hero{color:#04304a;background:linear-gradient(135deg,#8fdcff,#55c4f7 45%,#86e8a4)}
+.hero p,.hero h1,.wm{text-shadow:0 1px 3px #fff9}.two div{background:rgba(255,255,255,.55);border-color:#fff}
+.cat.on,.lc.on,.sbox .cat.on{color:#04304a}
+.skip{position:absolute;left:-999px}.skip:focus{left:10px;top:10px;z-index:99;background:#fff;color:#000;padding:8px 14px;border-radius:8px}
+#cb{position:fixed;left:10px;right:10px;bottom:calc(10px + env(safe-area-inset-bottom,0px));z-index:70;max-width:760px;margin:auto;background:var(--glass2);backdrop-filter:blur(14px);border:1px solid var(--line);border-radius:22px;padding:14px 18px;box-shadow:0 10px 40px #0005;display:none}#cb p{margin:0 0 10px;font-size:.92rem;line-height:1.5}
+#ft{position:relative;z-index:1;max-width:1250px;margin:0 auto;padding:10px 14px 40px;font-size:.82rem;color:var(--mute);line-height:1.7}#ft button{border:0;background:none;color:inherit;text-decoration:underline;cursor:pointer;font:inherit;padding:0 6px}
+table{border-collapse:collapse;width:100%}td,th{border:1px solid var(--line);padding:6px 8px;text-align:left;font-size:.86rem;vertical-align:top}
+
+:root{--glass:rgba(206,243,240,.82);--glass2:rgba(228,251,248,.96);--line:rgba(88,196,192,.6);--mute:#3b6876;--shadow:0 8px 24px rgba(10,120,130,.16)}
+.pill{background:linear-gradient(#d6f8f3,#a8ebe3);color:#0a4a52}
+.two div{background:rgba(222,250,246,.72)}
+.av{display:inline-flex;width:22px;height:22px;border-radius:50%;align-items:center;justify-content:center;font-weight:700;font-size:.75rem;margin-right:6px;color:#06364a;vertical-align:middle}
+.hi{margin:0 0 6px;font-weight:700;letter-spacing:.02em}
+.steps3{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:12px}
+.steps3 div{background:var(--glass2);border:1px solid var(--line);border-radius:18px;padding:10px 16px}.steps3 h3{margin:0 0 4px}.steps3 p{margin:0;line-height:1.55}
+.wide{max-width:none}
+</style>
+</head>
+<body>
+<a class="skip" href="#m">Skip to content</a>
+<i class="bub" style="width:160px;height:160px;left:-40px;top:30%;--d:17s"></i><i class="bub" style="width:90px;height:90px;right:6%;top:18%;--d:13s;animation-delay:-3s"></i><i class="bub" style="width:220px;height:220px;right:-60px;bottom:8%;--d:21s;animation-delay:-5s"></i><i class="bub" style="width:60px;height:60px;left:12%;top:70%;--d:12s;animation-delay:-7s"></i><i class="bub" style="width:120px;height:120px;left:46%;top:8%;--d:19s;animation-delay:-2s"></i><i class="bub" style="width:44px;height:44px;right:24%;bottom:22%;--d:11s;animation-delay:-9s"></i>
+<header>
+ <div class="logo" onclick="go('home')">borderless</div>
+ <nav><button class="tab" data-v="home"></button><button class="tab" data-v="blog"></button><button class="tab" data-v="donate"></button></nav>
+ <input id="q" type="search" aria-label="Search">
+ <button class="btn g" id="up"></button>
+ <div class="langs" id="langs" role="group" aria-label="Language"></div>
+</header>
+<main id="m" tabindex="-1"></main>
+<footer id="ft"></footer>
+
+<div class="modal" id="mo"><div class="box" id="bx" role="dialog" aria-modal="true" aria-label="Dialog"></div></div><div id="cb" role="dialog" aria-label="Cookie and storage choices"><p><b>Remember your language?</b> We can save your language choice and translations on this device. Translating sends the text to an AI service. We use no advertising or analytics. <a href="#" onclick="go('cookies');return false">Cookie Policy</a></p><div class="row"><button class="btn" onclick="cbSet(false)">Reject non-essential</button><button class="btn" onclick="cbChoose()">Choose</button><button class="btn" onclick="cbSet(true)">Accept all</button></div></div>
+<div class="toast" id="ts" role="status" aria-live="polite"></div><div class="toast" id="st" role="status" aria-live="polite" style="background:var(--blue2);bottom:calc(70px + env(safe-area-inset-bottom,0px))"></div>
+
+<script>
+const L={
+en:["English","Home","Articles","Donate","Search notes, videos, tests…","Share","All","Free learning for every student","Notes, videos and study guides shared by students, for students. No fees, ever.","likes","Comments","Add a comment","Post","Title","Category","Type","Link or text","Close","Nothing here yet. Be the first to share.","Thank you! (demo only, no payment taken)","Give now","Categories","Note","Video","Material","Write a comment…"],
+fr:["Français","Accueil","Articles","Faire un don","Rechercher cours, vidéos, examens…","Partager","Tout","L’apprentissage gratuit pour chaque élève","Notes, vidéos et fiches partagées par des élèves, pour des élèves. Toujours gratuit.","j’aime","Commentaires","Ajouter un commentaire","Publier","Titre","Catégorie","Type","Lien ou texte","Fermer","Rien ici pour l’instant. Soyez le premier.","Merci ! (démo, aucun paiement)","Donner","Catégories","Notes","Vidéo","Ressource","Écrire un commentaire…"],
+de:["Deutsch","Start","Artikel","Spenden","Notizen, Videos, Tests suchen…","Teilen","Alle","Kostenloses Lernen für alle Schüler","Notizen, Videos und Lernhilfen von Schülern für Schüler. Immer kostenlos.","Likes","Kommentare","Kommentar hinzufügen","Senden","Titel","Kategorie","Art","Link oder Text","Schließen","Noch nichts da. Teile als Erste*r.","Danke! (nur Demo, keine Zahlung)","Jetzt spenden","Kategorien","Notiz","Video","Material","Kommentar schreiben…"],
+nl:["Nederlands","Home","Artikelen","Doneren","Zoek notities, video’s, toetsen…","Delen","Alles","Gratis leren voor elke leerling","Notities, video’s en studiehulp van leerlingen voor leerlingen. Altijd gratis.","likes","Reacties","Reactie toevoegen","Plaatsen","Titel","Categorie","Type","Link of tekst","Sluiten","Nog niets. Deel als eerste.","Bedankt! (alleen demo, geen betaling)","Doneer nu","Categorieën","Notitie","Video","Materiaal","Schrijf een reactie…"],
+ru:["Русский","Главная","Статьи","Пожертвовать","Поиск конспектов, видео, тестов…","Поделиться","Все","Бесплатное обучение для каждого","Конспекты, видео и шпаргалки от учеников для учеников. Всегда бесплатно.","лайков","Комментарии","Добавить комментарий","Отправить","Название","Категория","Тип","Ссылка или текст","Закрыть","Пока пусто. Будьте первым.","Спасибо! (демо, платёж не списан)","Помочь","Категории","Конспект","Видео","Материал","Напишите комментарий…"],
+hi:["हिन्दी","होम","लेख","दान करें","नोट्स, वीडियो, टेस्ट खोजें…","साझा करें","सभी","हर छात्र के लिए मुफ़्त शिक्षा","छात्रों द्वारा छात्रों के लिए नोट्स, वीडियो और अध्ययन सामग्री। हमेशा मुफ़्त।","पसंद","टिप्पणियाँ","टिप्पणी जोड़ें","पोस्ट","शीर्षक","श्रेणी","प्रकार","लिंक या टेक्स्ट","बंद करें","अभी कुछ नहीं है। पहले साझा करें।","धन्यवाद! (केवल डेमो)","अभी दान करें","श्रेणियाँ","नोट्स","वीडियो","सामग्री","टिप्पणी लिखें…"],
+id:["Bahasa Indonesia","Beranda","Artikel","Donasi","Cari catatan, video, ujian…","Bagikan","Semua","Belajar gratis untuk setiap siswa","Catatan, video, dan materi belajar dari siswa untuk siswa. Selalu gratis.","suka","Komentar","Tambah komentar","Kirim","Judul","Kategori","Jenis","Tautan atau teks","Tutup","Belum ada apa-apa. Jadilah yang pertama.","Terima kasih! (hanya demo)","Donasi sekarang","Kategori","Catatan","Video","Materi","Tulis komentar…"],
+zh:["中文","首页","文章","捐赠","搜索笔记、视频、考试…","分享","全部","为每位学生提供免费学习","由学生分享给学生的笔记、视频和学习资料。永远免费。","赞","评论","添加评论","发布","标题","分类","类型","链接或文字","关闭","这里还没有内容，来做第一个分享者吧。","谢谢！（仅演示，未扣款）","立即捐赠","分类","笔记","视频","资料","写评论…"],
+ko:["한국어","홈","글","기부","노트, 영상, 시험 검색…","공유","전체","모든 학생을 위한 무료 학습","학생이 학생에게 나누는 노트, 영상, 학습 자료. 언제나 무료.","좋아요","댓글","댓글 달기","게시","제목","카테고리","유형","링크 또는 텍스트","닫기","아직 아무것도 없어요. 첫 번째로 공유해 보세요.","감사합니다! (데모, 결제 없음)","기부하기","카테고리","노트","영상","자료","댓글 쓰기…"],
+ja:["日本語","ホーム","記事","寄付","ノート、動画、試験を検索…","共有","すべて","すべての学生に無料の学びを","学生が学生のために共有するノート、動画、学習資料。ずっと無料。","いいね","コメント","コメントを追加","投稿","タイトル","カテゴリ","種類","リンクまたはテキスト","閉じる","まだ何もありません。最初の共有者になりましょう。","ありがとうございます！（デモ、課金なし）","寄付する","カテゴリ","ノート","動画","資料","コメントを書く…"],
+es:["Español","Inicio","Artículos","Donar","Buscar apuntes, vídeos, exámenes…","Compartir","Todo","Aprendizaje gratis para cada estudiante","Apuntes, vídeos y guías compartidos por estudiantes para estudiantes. Siempre gratis.","me gusta","Comentarios","Añadir comentario","Publicar","Título","Categoría","Tipo","Enlace o texto","Cerrar","Aún no hay nada. Sé el primero en compartir.","¡Gracias! (demo, sin pago)","Donar ahora","Categorías","Apuntes","Vídeo","Material","Escribe un comentario…"],
+pt:["Português","Início","Artigos","Doar","Buscar resumos, vídeos, provas…","Compartilhar","Tudo","Aprendizado gratuito para todo estudante","Resumos, vídeos e guias compartilhados por estudantes para estudantes. Sempre grátis.","curtidas","Comentários","Adicionar comentário","Publicar","Título","Categoria","Tipo","Link ou texto","Fechar","Nada por aqui ainda. Seja o primeiro.","Obrigado! (demo, sem cobrança)","Doar agora","Categorias","Resumo","Vídeo","Material","Escreva um comentário…"],
+ar:["العربية","الرئيسية","مقالات","تبرّع","ابحث عن ملخصات وفيديوهات واختبارات…","مشاركة","الكل","تعلّم مجاني لكل طالب","ملخصات وفيديوهات ومواد دراسية يشاركها الطلاب مع الطلاب. مجانًا دائمًا.","إعجاب","التعليقات","أضف تعليقًا","نشر","العنوان","الفئة","النوع","رابط أو نص","إغلاق","لا شيء هنا بعد. كن أول من يشارك.","شكرًا! (عرض تجريبي، لا دفع)","تبرّع الآن","الفئات","ملخص","فيديو","مادة","اكتب تعليقًا…"],
+fa:["فارسی","خانه","مقالات","کمک مالی","جستجوی جزوه، ویدیو، آزمون…","اشتراک‌گذاری","همه","آموزش رایگان برای هر دانش‌آموز","جزوه، ویدیو و منابع درسی که دانش‌آموزان برای هم به اشتراک می‌گذارند. همیشه رایگان.","پسند","نظرات","افزودن نظر","ارسال","عنوان","دسته","نوع","پیوند یا متن","بستن","هنوز چیزی نیست. اولین نفر باشید.","سپاس! (نسخه آزمایشی، بدون پرداخت)","اهدا کنید","دسته‌ها","جزوه","ویدیو","منبع","نظر بنویسید…"],
+tr:["Türkçe","Ana sayfa","Makaleler","Bağış","Not, video, sınav ara…","Paylaş","Tümü","Her öğrenci için ücretsiz öğrenme","Öğrencilerden öğrencilere notlar, videolar ve çalışma materyalleri. Her zaman ücretsiz.","beğeni","Yorumlar","Yorum ekle","Gönder","Başlık","Kategori","Tür","Bağlantı veya metin","Kapat","Henüz bir şey yok. İlk paylaşan sen ol.","Teşekkürler! (demo, ödeme yok)","Şimdi bağış yap","Kategoriler","Not","Video","Materyal","Yorum yaz…"],
+bn:["বাংলা","হোম","প্রবন্ধ","দান করুন","নোট, ভিডিও, পরীক্ষা খুঁজুন…","শেয়ার","সব","প্রতিটি শিক্ষার্থীর জন্য বিনামূল্যে শিক্ষা","শিক্ষার্থীদের থেকে শিক্ষার্থীদের জন্য নোট, ভিডিও ও পড়ার উপকরণ। সবসময় বিনামূল্যে।","পছন্দ","মন্তব্য","মন্তব্য যোগ করুন","পোস্ট","শিরোনাম","বিভাগ","ধরন","লিংক বা লেখা","বন্ধ","এখনও কিছু নেই। প্রথম শেয়ার করুন।","ধন্যবাদ! (শুধু ডেমো)","এখন দান করুন","বিভাগসমূহ","নোট","ভিডিও","উপকরণ","মন্তব্য লিখুন…"],
+sw:["Kiswahili","Mwanzo","Makala","Changia","Tafuta maelezo, video, mitihani…","Shiriki","Zote","Elimu bure kwa kila mwanafunzi","Maelezo, video na miongozo kutoka kwa wanafunzi kwa wanafunzi. Bure daima.","zinazopendwa","Maoni","Ongeza maoni","Tuma","Kichwa","Kategoria","Aina","Kiungo au maandishi","Funga","Hakuna kitu bado. Kuwa wa kwanza kushiriki.","Asante! (onyesho tu, hakuna malipo)","Changia sasa","Kategoria","Maelezo","Video","Nyenzo","Andika maoni…"]};
+const K=["name","home","blog","donate","ph","share","all","h1","sub","likes","cms","addc","post","title","cat","type","link","close","empty","thanks","give","cats","note","video","mat","wc"];
+const T=(k)=>{const a=L[S.lang]||L.en;return a[K.indexOf(k)]};
+const CATS={"Math":["Elementary math","Pre-algebra","Algebra 1 & 2","Geometry","Trigonometry","Precalculus","Calculus","Statistics","Linear algebra"],
+"English":["Reading & phonics","Grammar","Writing & essays","Literature","ESL / EFL"],
+"Sciences":["Biology","Chemistry","Physics","Earth science","Environmental science"],
+"Social studies":["World history","US history","European history","Geography","Civics & government","Economics","Psychology & sociology","Philosophy"],
+"AP":["AP Calculus","AP Biology","AP Chemistry","AP Physics","AP English","AP History","AP Computer Science","AP Statistics","Other AP"],
+"IB":["IB Math","IB Sciences","IB Language & Literature","IB Individuals & Societies","Theory of Knowledge","IB MYP"],
+"International exams":["SAT / ACT","TOEFL / IELTS","JLPT / HSK / TOPIK"],
+"Asian exams":["CSAT (Suneung)","Gaokao","JEE / NEET","UTBK"],
+"Europe, Americas, Middle East":["A-Levels","GCSE","Abitur","Baccalauréat","ENEM","Konkur"],
+"Languages":["Spanish","French","German","Mandarin","Arabic","Hindi","Other languages"],
+"Computing & arts":["Coding","Computer science","Visual art","Music"],
+"Life skills":["Study skills","College applications","Scholarships","Career guidance","Special needs support"]};
+const OTH={"Math":"Other math","English":"Other English","Sciences":"Other sciences","Social studies":"Other social studies","IB":"Other IB","International exams":"Other international exams","Asian exams":"Other Asian exams","Europe, Americas, Middle East":"Other exams","Computing & arts":"Other computing & arts","Life skills":"Other life skills"};
+Object.entries(OTH).forEach(([g,c])=>CATS[g].push(c));
+const ALLC=Object.values(CATS).flat();
+const ICON={note:["","linear-gradient(135deg,#bdf0ff,#7fd6ff)"],video:["","linear-gradient(135deg,#a8f5c0,#5fd88a)"],mat:["","linear-gradient(135deg,#d4f7b8,#8fe0c8)"]};
+const seed=[["Quadratic formula, explained with pictures","Algebra 1 & 2","note","Amara · Lagos","A one-page visual guide: completing the square, the formula, and when to factor instead."],
+["Gaokao essay structure cheat sheet","Gaokao","mat","Wei · Chengdu","Templates for argumentative 议论文 with example openings."],
+["Suneung English listening strategies","CSAT (Suneung)","video","Ji-woo · Busan","15 minute walkthrough of the common question types."],
+["AP Biology: cell respiration in one diagram","AP Biology","note","Sofia · Madrid","Glycolysis to ETC, colour-coded."],
+["SAT reading: finding evidence fast","SAT / ACT","video","Daniel · Houston","How to skip the passage fluff and hit the answer."],
+["Bac philo: plan de dissertation","Baccalauréat","note","Camille · Lyon","Méthode en trois parties avec exemples."],
+["JEE Physics: rotational motion formula sheet","JEE / NEET","mat","Aarav · Pune","All formulas on one printable page."],
+["IB Math AA HL: past paper tips","IB Math","note","Lena · Berlin","Common mark-scheme traps and how to avoid them."],
+["Learn Python from zero (free playlist)","Coding","video","Putri · Bandung","Variables, loops and a tiny quiz game."],
+["Tips lulus UTBK dengan belajar mandiri","Study skills","note","Rizky · Surabaya","Jadwal 12 minggu tanpa bimbel."],
+["Persian grammar basics for beginners","Other languages","mat","Sara · Shiraz","Sentence structure and the ezafe."],
+["ESL conversation starters","ESL / EFL","mat","Marcus · Lisbon","50 prompts for pair practice."]];
+const POSTS=[...seed.map((s,i)=>({id:i,title:s[0],cat:s[1],type:s[2],by:s[3],body:s[4],likes:[12,48,31,22,67,9,40,18,55,14,8,26][i],cm:[["Thanks, this helped!"]],sample:1}))];
+let C={};try{C=JSON.parse(localStorage.getItem("os_consent")||"{}")}catch(e){}
+let S={lang:"en",view:"home",cat:"all",q:"",liked:{},uid:99};
+try{const s=JSON.parse(localStorage.getItem("os")||"{}");if(s.lang&&L[s.lang])S.lang=s.lang;S.liked=s.liked||{};S.me=s.me||null;(s.posts||[]).forEach(p=>POSTS.unshift(p))}catch(e){}
+function save(){try{localStorage.setItem("os",JSON.stringify({lang:C.prefs?S.lang:undefined,liked:S.liked,me:S.me,posts:POSTS.filter(p=>!p.sample)}))}catch(e){}}
+const $=s=>document.querySelector(s);
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+function toast(t){const e=$("#ts");e.textContent=t;e.style.display="block";setTimeout(()=>e.style.display="none",2600)}
+function go(v){S.view=v;render()}
+const ART=[
+["Why a postcode still predicts a child’s future","Across the world, where a child is born shapes how long they stay in school and how much they learn. UNESCO estimates that roughly 250 million children and young people are out of school, and many more attend but never master basic reading and maths. Poverty, distance, conflict, gender norms and disability all push in the same direction.\n\nEven where school is free, the costs around it are not: uniforms, transport, exam fees, private tutoring and internet access. Families with money buy extra preparation for high-stakes exams such as the SAT, Gaokao, Suneung and JEE. Families without it often do not know those options exist.\n\nOpen Shelf exists for this gap. A well-made note, a clear video or a past paper walkthrough costs almost nothing to copy, and a student who has already climbed the hill can hand the rope down."],
+["What research says about closing learning gaps","Education researchers often point to a few approaches with strong evidence: high-quality early childhood education, structured small-group tutoring, teaching at the right level rather than the grade level, and removing financial barriers so students can stay enrolled. Peer tutoring, in which students teach one another, also shows consistent benefits for both the tutor and the learner.\n\nDigital tools help most when they supplement good teaching and reach students who can actually connect. That is why this site favours light pages, text notes and downloadable files, which work on slow connections and shared phones.\n\nTo read further, look up reports from UNESCO’s Global Education Monitoring Report, the World Bank’s work on learning poverty, and the OECD’s PISA analyses of equity in education."],
+["The hidden cost of high-stakes exams","National and international exams decide university places and scholarships for millions. The test itself may be standardised, but preparation is not. A student with paid tutors, mock exams and quiet space starts well ahead of one revising on a bus.\n\nCommunity-made study resources can level part of this field: translated explanations, free past-paper solutions, and honest advice from students who recently sat the exam. They cannot replace funding for schools, but they can reach a learner tonight, for free.\n\nIf you have sat an exam, even a small guide to the format helps someone. Share it in the right category, in your own language."]];
+const X={wi:"What is borderless?",wip:"A free place where students share notes, videos and study materials with each other. Browse by subject or exam, like and comment, and add your own.",gl:"Our goal",glp:"We strive to narrow educational inequality. Good study material should not depend on your country, your school’s budget or whether you can afford a tutor. Everything here is free to read and free to share.",ex:"example",you:"You",s1:"children and youth out of school (UNESCO estimate)",s2:"fees to read or share here",s3:"interface languages",dn:"borderless stays free because supporters cover the costs of hosting, translation and access grants. Choose an amount below.",gg:"Where gifts go",pro:"This is a prototype: the button doesn’t take payment. Before launch, connect a payment provider and a registered nonprofit or fiscal sponsor.",ill:"Illustrative examples only. Replace with our real, published budget before launch.",gm:"Good morning",ga:"Good afternoon",ge:"Good evening",wb:"Welcome back",hw:"How it works",a1:"Find what you need",a1p:"Pick your subject or exam. Everything is free, with no ads.",a2:"Learn at your own pace",a2p:"Read a note, watch a video, ask a question. No question is too basic.",a3:"Pass it on",a3p:"Share one thing you know. It might be exactly what someone needed today.",pm:"Our community promise",pmp:"Be kind. Share honestly and credit others. Ask for help without shame. We are all learning.",nt:"A note from us",ntp:"Not everyone has a tutor, a quiet room or the right textbook. Everyone has something worth sharing. Start with one note, and thank someone who helped you.",kind:"Be kind and helpful. A real student will read this.",thx:"Thank you for sharing. Someone will be glad you did."};
+const FUND=[["","$5","helps cover data costs so a student can download a month of materials"],["","$25","funds printed study packs for a school library without internet"],["","$100","helps pay an exam fee for a student who could not afford it"]];
+let amt=0;
+function render(keep){
+ drawLangs();ft();document.documentElement.lang=S.lang;document.documentElement.dir=["ar","fa"].includes(S.lang)?"rtl":"ltr";
+ document.querySelectorAll(".tab").forEach(b=>{b.textContent=T(b.dataset.v);b.classList.toggle("on",b.dataset.v===S.view)});
+ $("#q").placeholder=T("ph");$("#up").textContent=T("share");
+ const m=$("#m");
+ if(S.view==="home")m.innerHTML=home();else if(S.view==="blog")m.innerHTML=blog();else if(POL[S.view])m.innerHTML=policy(S.view);else if(S.view==="delete")m.innerHTML=delView();else m.innerHTML=donate();
+ if(!keep)window.scrollTo(0,0)
+}
+function av(n){let h=0;for(const c of n)h=(h*31+c.charCodeAt(0))%360;return `<span class="av" aria-hidden="true" style="background:hsl(${h},65%,80%)">${esc([...n][0]||"?")}</span>`}
+function greet(){const h=new Date().getHours(),k=h<12?X.gm:h<18?X.ga:X.ge;return S.me?t(X.wb)+", "+esc(S.me.name):t(k)}
+function home(){
+ const boxes=Object.entries(CATS).map(([g,a])=>`<section class="sbox"><h3>${t(g)}</h3><div class="chips">${a.map(c=>`<button class="cat ${S.cat===c?"on":""}" data-c="${esc(c)}">${t(c)}</button>`).join("")}</div></section>`).join("");
+ setTimeout(()=>{grid();document.querySelectorAll(".chips .cat").forEach(b=>b.onclick=()=>setCat(b.dataset.c))});
+ return `<section class="hero"><p class="hi">${greet()}</p><div class="wm">borderless</div><h1>${T("h1")}</h1><p>${T("sub")}</p><div class="two"><div><h3>${t(X.wi)}</h3><p>${t(X.wip)}</p></div><div><h3>${t(X.gl)}</h3><p>${t(X.glp)}</p></div></div><div class="row"><button class="btn g" onclick="openUp()">${T("share")}</button><button class="btn" onclick="go('blog')">${T("blog")}</button><button class="btn" onclick="go('donate')">${T("donate")}</button></div></section><section class="panel wide"><h2>${t(X.hw)}</h2><div class="steps3"><div><h3>1. ${t(X.a1)}</h3><p>${t(X.a1p)}</p></div><div><h3>2. ${t(X.a2)}</h3><p>${t(X.a2p)}</p></div><div><h3>3. ${t(X.a3)}</h3><p>${t(X.a3p)}</p></div></div><div class="steps3" style="margin-top:12px"><div><h3>${t(X.pm)}</h3><p>${t(X.pmp)}</p></div><div><h3>${t(X.nt)}</h3><p>${t(X.ntp)}</p></div></div></section><h2>${T("cats")}</h2><div class="boxes">${boxes}</div><div class="row" id="feed"><h2 style="margin-right:8px">${S.cat==="all"?T("all"):esc(t(S.cat))}</h2>${S.cat==="all"?"":`<button class="act" onclick="setCat('all')">${T("all")}</button>`}</div><div id="gr"></div>`
+}
+function grid(){
+ const g=$("#gr");if(!g)return;const q=S.q.toLowerCase();
+ const list=POSTS.filter(p=>(S.cat==="all"||p.cat===S.cat)&&(!q||(p.title+p.cat+(p.body||"")+t(p.title)+t(p.cat)).toLowerCase().includes(q)));
+ g.innerHTML=list.length?`<div class="grid">`+list.map(p=>{const ic=ICON[p.type];return `<article class="card" onclick="openPost(${p.id})"><div class="thumb" style="background:${ic[1]}">${T(p.type)}</div><div class="b"><span class="pill">${esc(t(p.cat))}</span><h3>${esc(t(p.title))}</h3><div class="meta">${av(p.by)}${esc(t(p.by))}${p.sample?" · "+t(X.ex):""}</div><div class="row"><button class="act ${S.liked[p.id]?"on":""}" onclick="like(event,${p.id})">${p.likes+(S.liked[p.id]?1:0)} ${T("likes")}</button><span class="act">${p.cm.length} ${T("cms")}</span></div></div></article>`}).join("")+`</div>`:`<div class="empty">${T("empty")}</div>`
+}
+function setCat(c){S.cat=c;render();setTimeout(()=>$("#feed").scrollIntoView(),30)}
+function like(e,id){e.stopPropagation();if(!S.me){openJoin();return false}S.liked[id]=!S.liked[id];save();grid();return true}
+function openPost(id){
+ const p=POSTS.find(x=>x.id===id),ic=ICON[p.type];
+ $("#bx").innerHTML=`<div class="thumb" style="background:${ic[1]};border-radius:18px;height:90px">${T(p.type)}</div><span class="pill">${esc(t(p.cat))}</span><h2>${esc(t(p.title))}</h2><div class="meta">${av(p.by)}${esc(t(p.by))}</div><p>${esc(t(p.body))}</p>${p.alt?`<p class="meta">Description: ${esc(p.alt)}</p>`:""}${p.link?`<p><a href="${esc(p.link)}" target="_blank" rel="noopener noreferrer">${esc(p.link)}</a></p>`:""}<button class="act ${S.liked[id]?"on":""}" onclick="like(event,${id})&&openPost(${id})">${p.likes+(S.liked[id]?1:0)} ${T("likes")}</button><h3>${T("cms")} (${p.cm.length})</h3><div id="cl">${p.cm.map(c=>`<div class="cm">${esc(t(c))}</div>`).join("")}</div><div class="row"><input id="ci" aria-label="${T("wc")}" placeholder="${T("wc")}" style="flex:1"><button class="btn" onclick="addC(${id})">${T("post")}</button></div><p class="meta">${t(X.kind)}</p><div class="row"><button class="act" onclick="closeM()">${T("close")}</button></div>`;
+ $("#mo").classList.add("on")
+}
+function addC(id){if(!S.me){closeM();return openJoin()}const v=$("#ci").value.trim();if(!v)return;const p=POSTS.find(x=>x.id===id);p.cm.push(v);save();openPost(id);grid()}
+function closeM(){$("#mo").classList.remove("on")}
+function openUp(){
+ if(!S.me)return openJoin();
+ $("#bx").innerHTML=`<h2>${T("share")}</h2><label for="ut">${T("title")}</label><input id="ut" maxlength="140"><label for="uc">${T("cat")}</label><select id="uc">${Object.entries(CATS).map(([g,a])=>`<optgroup label="${esc(t(g))}">${a.map(c=>`<option value="${esc(c)}">${esc(t(c))}</option>`).join("")}</optgroup>`).join("")}</select><label for="uy">${T("type")}</label><select id="uy"><option value="note">${T("note")}</option><option value="video">${T("video")}</option><option value="mat">${T("mat")}</option></select><label for="ub">${T("link")}</label><textarea id="ub" rows="4" maxlength="5000"></textarea><label for="ua">Alt text: describe any image or video for people using screen readers</label><input id="ua" maxlength="200"><p class="meta">Only share material you made or have permission to share. Do not include personal details about other people.</p><label><input type="checkbox" id="ur" style="width:auto"> I made this or have permission to share it, and I agree it can be shown publicly under the <a href="#" onclick="closeM();go('terms');return false">Terms</a>. (required)</label><div class="row" style="margin-top:14px"><button class="btn g" onclick="doUp()">${T("post")}</button><button class="act" onclick="closeM()">${T("close")}</button></div>`;
+ $("#mo").classList.add("on")
+}
+function doUp(){
+ const t=$("#ut").value.trim();if(!t)return $("#ut").focus();if(!$("#ur").checked){toast("Please confirm you have the right to share this.");return $("#ur").focus()}
+ const b=$("#ub").value.trim(),link=/^https?:\/\/\S+$/.test(b)?b:"";
+ POSTS.unshift({id:++S.uid+Date.now()%100000,title:t,cat:$("#uc").value,type:$("#uy").value,by:S.me.name,alt:$("#ua").value.trim(),body:link?"":b,link,likes:0,cm:[]});save();closeM();S.view="home";render();toast(t(X.thx))
+}
+function blog(){return `<div class="panel"><h1>${T("blog")}</h1><div class="stats"><div class="stat"><b>~250M</b><br>${t(X.s1)}</div><div class="stat"><b>0</b><br>${t(X.s2)}</div><div class="stat"><b>${Object.keys(L).length}</b><br>${t(X.s3)}</div></div></div>`+ART.map(a=>`<article class="panel"><h2>${t(a[0])}</h2>${a[1].split("\n\n").map(p=>`<p>${t(p)}</p>`).join("")}</article>`).join("")}
+function donate(){const P=[5,10,25,50,100];return `<div class="panel"><h1>${T("donate")}</h1><p>${t(X.dn)}</p><fieldset style="border:0;padding:0"><legend>One-time amount (USD)</legend><div class="amts">${P.map(a=>`<button class="act ${amt===a?"on":""}" aria-pressed="${amt===a}" onclick="amt=${a};go('donate')">$${a}</button>`).join("")}</div><label for="ca">Or enter another amount</label> <input id="ca" type="number" min="1" step="1" style="width:120px" value="${amt&&!P.includes(amt)?amt:""}" onchange="amt=Math.max(0,Math.floor(+this.value||0));go('donate')"></fieldset><p><b>${amt?"Total charged: $"+amt+".00":"No amount selected"}</b>. One time only. Nothing is pre-selected and nothing recurs. borderless adds no fee on top. <i>[Before launch, state any payment-provider fees and whether gifts are tax-deductible.]</i></p><button class="btn g" ${amt?"":"disabled"} onclick="toast(T('thanks'))">${T("give")}${amt?" $"+amt:""}</button><p class="meta">${t(X.pro)} See the <a href="#" onclick="go('refund');return false">Refund Policy</a>.</p></div><div class="panel"><h2>${t(X.gg)}</h2>${FUND.map(f=>`<p><b>${f[1]}</b> ${t(f[2])}.</p>`).join("")}<p class="meta">${t(X.ill)}</p></div>`}
+const TM={};try{Object.assign(TM,JSON.parse(localStorage.getItem("tm")||"{}"))}catch(e){}
+const t=s=>((TM[S.lang]||{})[s])||s;
+function status(x){const e=$("#st");e.textContent=x;e.style.display=x?"block":"none"}
+function allStrings(){const a=new Set;Object.keys(CATS).forEach(g=>{a.add(g);CATS[g].forEach(c=>a.add(c))});Object.values(X).forEach(v=>a.add(v));ART.forEach(x=>{a.add(x[0]);x[1].split("\n\n").forEach(p=>a.add(p))});FUND.forEach(f=>a.add(f[2]));POSTS.forEach(p=>{a.add(p.title);if(p.body)a.add(p.body);p.cm.forEach(c=>a.add(c))});return[...a].filter(Boolean)}
+async function translateAll(){
+ const lang=S.lang;if(lang==="en")return;if(!C.prefs){if(!C.v)$("#cb").style.display="block";else toast("To translate content, allow Preferences in Cookie settings. Translated text is sent to an AI translation service.");return}
+ const m=TM[lang]=TM[lang]||{},todo=allStrings().filter(x=>!m[x]);if(!todo.length)return;
+ let sm=null;try{sm=window.claude&&await window.claude.use("sample")}catch(e){}
+ if(!sm){toast("Live translation isn’t available in this view.");return}
+ const bs=[];let cur=[],n=0;for(const x of todo){if(n+x.length>1800&&cur.length){bs.push(cur);cur=[];n=0}cur.push(x);n+=x.length}if(cur.length)bs.push(cur);
+ for(let i=0;i<bs.length;i++){
+  if(S.lang!==lang)break;status(L[lang][0]+" … "+(i+1)+"/"+bs.length);
+  try{const r=await sm.json("Translate every string in this JSON array into "+L[lang][0]+" (language code "+lang+"). Use natural wording for students. Keep proper names, numbers, currency and exam acronyms (SAT, AP, IB, Gaokao, etc.) unchanged. Return ONLY a JSON array with the same length and order.\n"+JSON.stringify(bs[i]));
+   if(Array.isArray(r)&&r.length===bs[i].length)bs[i].forEach((x,j)=>{if(typeof r[j]==="string"&&r[j])m[x]=r[j]});
+   try{if(C.prefs)localStorage.setItem("tm",JSON.stringify(TM))}catch(e){}
+   if(S.lang===lang)render(true)
+  }catch(e){if(e&&(e.code==="not_granted"||e.code==="rate_limited")){toast("Translation paused.");break}}
+ }
+ status("")
+}
+const BIZ={n:"[Legal entity name]",a:"[Registered address]",r:"[Registration or charity number]",e:"[contact email]",p:"[privacy contact email]",j:"[governing law and courts]"};
+const D="Last updated 11 November 2026. This is a template for a prototype. Have a qualified lawyer review and complete it before launch. Policy pages are in English only and the English text governs.";
+const POL={
+privacy:["Privacy Policy",[
+["Who we are",`${BIZ.n} (“borderless”, “we”), ${BIZ.a}, registration ${BIZ.r}, is responsible for your personal data. Privacy contact: ${BIZ.p}.`],
+["What we collect",`Only what we need: a display name (please use a nickname), your year of birth (to check your age), what you choose to post or comment, and a record of your consents. If you opt in to emails we also store your email address. We do not ask for your precise location, contacts or card details. Donations are handled by a payment provider.`],
+["Why we use it",`To run your account and show your posts (contract); to keep the site safe and act on reports (legitimate interests); to send optional emails (your consent, which you can withdraw at any time); and to meet legal duties.`],
+["Age and children",`borderless is for people 13 and older. If you are under 16, or under the age of digital consent where you live, a parent or guardian must agree before you join, and we do not send you marketing email. We keep only your year of birth. If we learn that a child under 13 has an account, we delete it.`],
+["Who we share it with",`Only service providers acting on our instructions: [hosting and database provider], [email provider], [payment provider], and an AI translation service when you ask the site to translate content (the text being translated is sent to it). We do not sell your personal data and do not use it for advertising.`],
+["Transfers and retention",`Providers may process data outside your country, under approved safeguards where the law requires them. We keep account data until you delete your account, moderation and legal records for up to [12] months, and consent records as long as needed to prove consent. Backups are overwritten within [35] days.`],
+["Your rights",`You can ask to access, correct, delete or export your data, to object to or restrict its use, and to withdraw consent at any time. Use the <a href="#" onclick="go('delete');return false">Delete my data</a> page or email ${BIZ.p}. We reply within 30 days. You may complain to your local data protection authority. California residents have equivalent rights; we do not sell or share personal information.`],
+["Security and changes",`We use encryption in transit, access controls and limited staff access. We will post changes on this page and, for material changes, tell account holders.`]]],
+terms:["Terms of Service",[
+["Using borderless",`You must be 13 or older (with parent or guardian permission if under 16). Keep your account details safe and use a nickname rather than your real name. We may suspend accounts that break these terms.`],
+["Your content",`You keep ownership of what you post. You give us a non-exclusive, worldwide licence to host, display and distribute it on borderless so others can use it for free. Only post material you made or have permission to share. Do not post other people’s personal information, harassment, hateful, sexual or dangerous content, malware, spam, or exam material that is confidential or stolen.`],
+["Copyright and reports",`To report infringing or unsafe content, use the report option or email ${BIZ.e} with the link, what is wrong, and your contact details. We review reports, may remove content, and remove repeat infringers’ access.`],
+["No professional advice",`Content is shared by community members. We do not check it for accuracy and it is not professional, legal or exam-board advice. Check important details with your teacher or the official exam body.`],
+["Liability",`The site is provided as is. To the extent the law allows, we are not liable for losses from using it. Nothing here limits liability that cannot be limited by law, or your statutory consumer rights.`],
+["Law and changes",`These terms are governed by ${BIZ.j}, without taking away protections you have under the law of your home country. We will post changes here and tell account holders about material ones.`]]],
+refund:["Refund Policy",[
+["What this covers",`borderless is free to use and sells nothing. This policy covers voluntary donations only.`],
+["Donations",`Donations are one-time, you choose the amount, and the total shown before you confirm is the total charged. There are no recurring charges unless you clearly choose them in a future version.`],
+["Refunds",`If you were charged by mistake, charged twice or did not authorise a gift, email ${BIZ.e} within [14] days (or longer where the law gives you more time) and we will refund the full amount to your original payment method within [10] business days. After that, refunds are at our discretion. [Confirm with your payment provider whether processing fees are returned.]`],
+["Your rights",`This policy does not affect any rights you have under consumer or payment-card rules.`]]],
+cookies:["Cookie and Storage Policy",[
+["What we use",`This prototype uses your browser’s local storage, not tracking cookies. We use no advertising, analytics or social-media trackers.`],
+["The table",`<div style="overflow-x:auto"><table><tr><th>Name</th><th>Purpose</th><th>Type</th><th>Lasts</th></tr><tr><td>os_consent</td><td>Remembers your choices here</td><td>Necessary</td><td>Until you change or delete it</td></tr><tr><td>os</td><td>Your account details, posts and likes on this device</td><td>Necessary (you asked for these features)</td><td>Until you delete it</td></tr><tr><td>os (language)</td><td>Your chosen language</td><td>Preferences, only with your permission</td><td>Until you delete it</td></tr><tr><td>tm</td><td>Saved translations so pages load faster</td><td>Preferences, only with your permission</td><td>Until you delete it</td></tr></table></div>`],
+["Your choices",`Use the Cookie settings link in the footer at any time. Rejecting non-essential storage does not limit what you can read or share.`]]]};
+function policy(k){const[t0,secs]=POL[k];return `<div class="panel"><h1>${t0}</h1><p class="meta">${D}</p>${secs.map(x=>`<h2>${x[0]}</h2><p>${x[1]}</p>`).join("")}</div>`}
+function ft(){$("#ft").innerHTML=`© 2026 ${BIZ.n} · ${BIZ.a} · Reg. ${BIZ.r} · ${BIZ.e}<br>`+[["privacy","Privacy"],["terms","Terms"],["refund","Refunds"],["cookies","Cookies"],["delete","Delete my data"]].map(x=>`<button onclick="go('${x[0]}')">${x[1]}</button>`).join("")+`<button onclick="cbChoose()">Cookie settings</button><br>No third-party scripts, trackers or web fonts are loaded; text uses fonts already on your device.`}
+function delView(){return `<div class="panel"><h1>Delete my data</h1><p>You can delete everything stored on this device right now, or send us a request to delete, correct or export data held on our servers. We reply within 30 days.</p><button class="btn" onclick="wipe()">Delete data on this device now</button><h2>Request to our team</h2><label for="de">Your account name or email</label><input id="de" autocomplete="email"><label for="dk">Request</label><select id="dk"><option>Delete my account and all my data</option><option>Send me a copy of my data</option><option>Correct my data</option></select><p></p><button class="btn" onclick="toast('Demo only: in the live site this goes to '+BIZ.p)">Submit request</button></div>`}
+function wipe(){["os","tm","os_consent"].forEach(k=>{try{localStorage.removeItem(k)}catch(e){}});toast("Data on this device deleted.");setTimeout(()=>location.reload(),900)}
+function cbSet(pf){C={v:1,prefs:!!pf,ts:Date.now()};try{localStorage.setItem("os_consent",JSON.stringify(C));if(!pf)localStorage.removeItem("tm")}catch(e){}$("#cb").style.display="none";save();if(pf&&S.lang!=="en")translateAll()}
+function cbChoose(){$("#bx").innerHTML=`<h2>Cookie and storage settings</h2><label><input type="checkbox" checked disabled style="width:auto"> Necessary: keeps your account, posts and likes working on this device. Always on.</label><label><input type="checkbox" id="cp" ${C.prefs?"checked":""} style="width:auto"> Preferences: remember my language and save translations. Translation sends the text to an AI service.</label><label><input type="checkbox" disabled style="width:auto"> Analytics and advertising: not used on this site.</label><div class="row" style="margin-top:14px"><button class="btn" onclick="cbSet($('#cp').checked);closeM()">Save choices</button><button class="act" onclick="closeM()">Close</button></div>`;$("#mo").classList.add("on")}
+function openJoin(){const y=new Date().getFullYear();$("#bx").innerHTML=`<h2>Join borderless</h2><p class="meta">Reading is open to everyone. To post, like or comment we ask for the minimum: a nickname and your year of birth.</p><label for="jn">Nickname (not your real name)</label><input id="jn" maxlength="40" autocomplete="nickname"><label for="jy">Year of birth</label><select id="jy" onchange="jAge()"><option value="">Select</option>${Array.from({length:90},(_,i)=>`<option>${y-5-i}</option>`).join("")}</select><p id="jm" class="meta" role="status"></p><label id="jg" style="display:none"><input type="checkbox" id="jgc" style="width:auto"> A parent or guardian has agreed to me joining.</label><label><input type="checkbox" id="jt" style="width:auto"> I agree to the <a href="#" onclick="closeM();go('terms');return false">Terms</a> and have read the <a href="#" onclick="closeM();go('privacy');return false">Privacy Policy</a>. (required)</label><label id="jmk"><input type="checkbox" id="jk" style="width:auto" onchange="$('#je').style.display=this.checked?'block':'none'"> Email me occasional borderless news. Optional. Every email has an unsubscribe link.</label><input id="je" type="email" autocomplete="email" aria-label="Email address" placeholder="Email, used only for these messages" style="display:none"><div class="row" style="margin-top:14px"><button class="btn g" onclick="doJoin()">Create account</button><button class="act" onclick="closeM()">${T("close")}</button></div>`;$("#mo").classList.add("on");$("#jn").focus()}
+function minAge(){const y=+$("#jy").value;return y?new Date().getFullYear()-y-1:99}
+function jAge(){const a=minAge(),y=$("#jy").value;$("#jg").style.display=y&&a>=13&&a<16?"block":"none";$("#jmk").style.display=y&&a<16?"none":"block";if(y&&a<16){$("#jk").checked=false;$("#je").style.display="none"}$("#jm").textContent=y&&a<13?"borderless accounts are for people 13 and older. You can still read everything without one.":""}
+function doJoin(){const n=$("#jn").value.trim(),a=minAge();if(n.length<2)return $("#jn").focus();if(!$("#jy").value)return $("#jy").focus();if(a<13)return;if(a<16&&!$("#jgc").checked)return $("#jgc").focus();if(!$("#jt").checked){toast("Please tick the box to agree to the Terms and Privacy Policy.");return $("#jt").focus()}const mk=a>=16&&$("#jk").checked;if(mk&&!/^\S+@\S+\.\S+$/.test($("#je").value.trim()))return $("#je").focus();
+ /* prototype: the email is validated but not stored */
+ S.me={name:n,yob:+$("#jy").value,guardian:a<16,marketing:mk,consentVersion:"2026-11-11",consentAt:new Date().toISOString()};save();closeM();toast("Welcome, "+n);render(true)}
+
+function drawLangs(){$("#langs").innerHTML=Object.entries(L).map(([k,v])=>`<button class="lc ${k===S.lang?"on":""}" data-k="${k}">${v[0]}</button>`).join("")}
+$("#langs").onclick=e=>{const k=e.target.dataset.k;if(k){S.lang=k;save();render();if(k!=="en"&&!C.v)$("#cb").style.display="block";else translateAll()}};
+$("#q").oninput=e=>{S.q=e.target.value;if(S.view!=="home"){S.view="home";render()}else grid()};
+$("#up").onclick=openUp;
+document.querySelectorAll(".tab").forEach(b=>b.onclick=()=>go(b.dataset.v));
+$("#mo").onclick=e=>{if(e.target.id==="mo")closeM()};
+document.onkeydown=e=>{if(e.key==="Escape")closeM()};
+render();
+</script>
+</body>
+</html>
